@@ -222,7 +222,7 @@ def simulate_inverter_generation(
         hourly_data.append({
             "time": str(df.index[i]),
             "generation_kw":
-                round(float(ac_power_kw[i]), 3)
+                round(float(ac_power_kw.iloc[i]), 3)
         })
 
     # =====================================================
