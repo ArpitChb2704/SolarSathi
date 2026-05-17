@@ -163,7 +163,7 @@ def simulate_inverter_generation(
 
             reduction = random.uniform(0.75, 0.95)
 
-            ac_power_kw[i] *= reduction
+            ac_power_kw.iloc[i] = ac_power_kw.iloc[i] * reduction
 
     # 7. Inverter clipping
     inverter_limit = capacity_kw * 0.99
