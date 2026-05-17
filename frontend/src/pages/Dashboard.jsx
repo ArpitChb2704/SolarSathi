@@ -27,7 +27,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 }
 
 
-function PlantCard({ plant }) {
+function PlantCard({ plant,userId }) {
   const [open, setOpen] = useState(false)
   const [tab, setTab] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -316,7 +316,7 @@ export default function Dashboard({ onNavigate }) {
 
       {!loading && plants.length > 0 && (
         <div className="plants-grid">
-          {plants.map(p => <PlantCard key={p.id} plant={p} />)}
+          {plants.map(p => <PlantCard key={p.id} plant={p} userId={userId} />)}
         </div>
       )}
     </div>
