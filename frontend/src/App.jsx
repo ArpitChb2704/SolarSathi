@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import AddPlant from './pages/AddPlant'
 import Profile from './pages/Profile'
 import Chatbot from './pages/Chatbot'
+import API from './config'
 
 const pageTitles = {
   dashboard: 'Dashboard',
@@ -22,7 +23,7 @@ function AppShell() {
 
   useEffect(() => {
     if (!userId) return
-    fetch(`/api/user/${userId}`)
+    fetch(`${API}/user/${userId}`)
       .then(r => r.json())
       .then(d => setUserName(d.name))
       .catch(() => {})
