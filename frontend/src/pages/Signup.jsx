@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API = '/api'
+import API from '../config'
 const BG = 'https://images.unsplash.com/flagged/photo-1566838616631-f2618f74a6a2?q=80&w=1600&auto=format&fit=crop'
 
 export default function Signup({ onSwitch }) {
