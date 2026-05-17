@@ -42,7 +42,7 @@ function PlantCard({ plant }) {
     setReportMsg('')
     setReportErr('')
     try {
-      const res = await fetch(`/api/send-report/${userId}`, { method: 'POST' })
+      const res = await fetch(`${API}/send-report/${userId}`, { method: 'POST' })
       const data = await res.json()
       if (res.ok) setReportMsg('Report sent to your email!')
       else setReportErr(data.detail)
@@ -57,7 +57,7 @@ function PlantCard({ plant }) {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(`${API}/send-report/${userId}`, { method: 'POST' })
+      const res = await fetch(`${API}/predict/${plant.id}`, { method: 'POST' })
       if (!res.ok) throw new Error('Prediction failed')
       const d = await res.json()
       setData(d)
