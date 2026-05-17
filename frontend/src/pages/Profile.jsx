@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-const API = '/api'
+import API from '../config'
 
 export default function Profile() {
   const { userId } = useAuth()
