@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ============================================
 # SUPABASE POSTGRESQL DATABASE URL
@@ -8,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 
 # Aisolar@723
 # If your password contains special characters like '@', you must URL-encode them. '@' becomes '%40'.
-DATABASE_URL = "postgresql://postgres:Aisolar%40723@db.mwwbasdspgjxpmrlkldd.supabase.co:5432/postgres"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Example:
 # DATABASE_URL = "postgresql://postgres:password@db.xxxxx.supabase.co:5432/postgres"
