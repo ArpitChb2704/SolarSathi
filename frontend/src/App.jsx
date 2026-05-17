@@ -48,7 +48,7 @@ function AppShell() {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <div className="brand-icon"><img src="src/logo.png" alt="Logo" height={120} width={120}/></div>
+          <div className="brand-icon"><img src="/logo.png" alt="Logo" height={120} width={120}/></div>
           <div className="brand-name">SolarSathi</div>
           <div className="brand-sub">Monitoring Platform</div>
         </div>
