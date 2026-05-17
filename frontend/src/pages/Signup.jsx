@@ -71,7 +71,7 @@ export default function Signup({ onSwitch }) {
         zIndex: 10,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, color: '#fff' }}><img src="src/logo.png" alt="Logo" height={140} width={140}/></span>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, color: '#fff' }}><img src="/logo.png" alt="Logo" height={140} width={140}/></span>
         </div>
         <button onClick={onSwitch} style={{
           background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)',
