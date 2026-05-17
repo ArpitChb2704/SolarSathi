@@ -37,6 +37,9 @@ function PlantCard({ plant }) {
   const [reportMsg, setReportMsg] = useState('')
   const [reportErr, setReportErr] = useState('')
 
+
+  const sendReport = async () => {
+    console.log('API:', API, 'userId:', userId)  // debug
   const sendReport = async () => {
     setSending(true)
     setReportMsg('')
