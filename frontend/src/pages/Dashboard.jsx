@@ -5,7 +5,7 @@ import {
   Tooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts'
 
-const API = '/api'
+import API from '../config'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
