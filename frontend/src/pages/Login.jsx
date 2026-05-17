@@ -57,7 +57,7 @@ export default function Login({ onSwitch }) {
           <span style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
             fontSize: 18, color: '#fff', letterSpacing: '-0.3px'
-          }}><img src="src/logo.png" alt="Logo" height={140} width={140}/></span>
+          }}><img src="/logo.png" alt="Logo" height={140} width={140}/></span>
         </div>
         <button
           onClick={onSwitch}
