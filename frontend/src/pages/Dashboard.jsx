@@ -255,6 +255,24 @@ export default function Dashboard({ onNavigate }) {
   const [reportMsg, setReportMsg] = useState('')
   const [reportErr, setReportErr] = useState('')
 
+
+
+  const sendReport = async () => {
+    setSending(true)
+    setReportMsg('')
+    setReportErr('')
+    try {
+      const res = await fetch(`/api/send-report/${userId}`, { method: 'POST' })
+      const data = await res.json()
+      if (res.ok) setReportMsg('Report sent to your email!')
+      else setReportErr(data.detail)
+    } catch {
+      setReportErr('Could not connect to server.')
+    } finally {
+      setSending(false)
+    }
+  }
+
   return (
     <div>
       <div className="section-header">
