@@ -57,7 +57,7 @@ function PlantCard({ plant }) {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(`${API}/predict/${plant.id}`, { method: 'POST' })
+      const res = await fetch(`${API}/send-report/${userId}`, { method: 'POST' })
       if (!res.ok) throw new Error('Prediction failed')
       const d = await res.json()
       setData(d)
