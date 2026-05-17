@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-const API = '/api'
+import API from '../config'
 
 const INTENT_COLORS = {
   plant_qa:      { color: '#34d399', label: 'Plant Info' },
