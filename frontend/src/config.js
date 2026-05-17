@@ -1,2 +1,2 @@
-const API = import.meta.env.VITE_API_URL || '/api'
+const API = 'https://backend-production-7c98.up.railway.app'
 export default API
