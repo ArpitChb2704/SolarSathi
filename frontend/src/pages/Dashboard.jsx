@@ -38,7 +38,7 @@ function PlantCard({ plant }) {
   const [reportErr, setReportErr] = useState('')
 
 
-  const sendReport = async () => {
+  {/*const sendReport = async () => {
     setSending(true)
     setReportMsg('')
     setReportErr('')
@@ -52,7 +52,7 @@ function PlantCard({ plant }) {
     } finally {
       setSending(false)
     }
-  }
+  }*/}
 
   const runPrediction = async () => {
     setLoading(true)
@@ -262,7 +262,7 @@ export default function Dashboard({ onNavigate }) {
     setReportMsg('')
     setReportErr('')
     try {
-      const res = await fetch(`/api/send-report/${userId}`, { method: 'POST' })
+      const res = await fetch(`${API}/send-report/${userId}`, { method: 'POST' })
       const data = await res.json()
       if (res.ok) setReportMsg('Report sent to your email!')
       else setReportErr(data.detail)
