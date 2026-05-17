@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-const API = '/api'
+import API from '../config'
 
 export default function AddPlant() {
   const { userId } = useAuth()
