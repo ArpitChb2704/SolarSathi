@@ -36,6 +36,7 @@ import dotenv
 from chatbot import CHAT_GRAPH
 from collections import defaultdict
 import base64
+from fastapi.middleware.cors import CORSMiddleware
 
 session_memory = defaultdict(list)
 
@@ -44,6 +45,14 @@ dotenv.load_dotenv()
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class ChatRequest(BaseModel):
         message: str
