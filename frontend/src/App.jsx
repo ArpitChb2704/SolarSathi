@@ -100,6 +100,44 @@ function AppShell() {
           {page === 'profile' && <Profile />}
           {page === 'chat' && <Chatbot userName={userName} />}
         </div>
+     </div>
+
+      {/* Mobile bottom nav */}
+      <div style={{
+        display: 'none',
+        position: 'fixed',
+        bottom: 0, left: 0, right: 0,
+        background: 'rgba(10,14,23,0.95)',
+        backdropFilter: 'blur(20px)',
+        borderTop: '1px solid rgba(255,255,255,0.1)',
+        padding: '8px 0 20px',
+        zIndex: 200,
+      }} className="mobile-bottom-nav">
+        {navItems.map(item => (
+          <button
+            key={item.id}
+            onClick={() => setPage(item.id)}
+            style={{
+              flex: 1,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: '8px 4px',
+              color: page === item.id ? '#f5c842' : 'rgba(255,255,255,0.4)',
+              fontFamily: 'var(--font-body)',
+              fontSize: 10,
+              fontWeight: page === item.id ? 600 : 400,
+              transition: 'color 0.2s',
+            }}
+          >
+            <span style={{ fontSize: 20 }}>{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
       </div>
     </div>
   )
