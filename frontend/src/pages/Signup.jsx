@@ -52,10 +52,12 @@ export default function Signup({ onSwitch }) {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh', display: 'flex',
+    <div className="auth-mobile-container" style={{
+      minHeight: '100vh',
+      display: 'flex',
       backgroundImage: `url('${BG}')`,
-      backgroundSize: 'cover', backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       position: 'relative',
     }}>
       <div style={{
