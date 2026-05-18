@@ -54,6 +54,7 @@ export default function Signup({ onSwitch }) {
   return (
     <div style={{
       minHeight: '100vh', display: 'flex',
+      flexDirection: 'column',
       backgroundImage: `url('${BG}')`,
       backgroundSize: 'cover', backgroundPosition: 'center',
       position: 'relative',
