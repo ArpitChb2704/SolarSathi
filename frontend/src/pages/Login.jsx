@@ -32,9 +32,9 @@ export default function Login({ onSwitch }) {
   }
 
   return (
-    <div style={{
+    <div className="auth-mobile-container" style={{
       minHeight: '100vh',
-      display: 'flex', 
+      display: 'flex',
       backgroundImage: `url('${BG}')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
