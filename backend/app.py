@@ -50,6 +50,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "https://solarsathi.online",
+        "https://www.solarsathi.online",
         "https://frontend-production-77de.up.railway.app",  # your vercel URL
     ],
     allow_credentials=True,
