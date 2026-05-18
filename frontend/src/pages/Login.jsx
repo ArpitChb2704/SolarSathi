@@ -34,8 +34,7 @@ export default function Login({ onSwitch }) {
   return (
     <div style={{
       minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column', 
+      display: 'flex', 
       backgroundImage: `url('${BG}')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
