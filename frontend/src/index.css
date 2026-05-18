@@ -717,6 +717,13 @@ body::before {
   .info-grid { grid-template-columns: 1fr; }
   .tabs { overflow-x: auto; flex-wrap: nowrap; }
   .tab { white-space: nowrap; flex-shrink: 0; }
+  .mobile-bottom-nav {
+  display: flex !important;
+  }
+
+  .page-content {
+    padding-bottom: 80px !important; /* space for bottom nav */
+  }
 
   /* Auth pages */
   .auth-mobile-container { flex-direction: column !important; }
