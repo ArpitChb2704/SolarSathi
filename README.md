@@ -263,8 +263,6 @@ Frontend and backend deployed with custom domain support:
 GitHub:
 https://github.com/ArpitChb2704
 
-LinkedIn:
-(Add profile link)
 
 ---
 
