@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
-from sqlalchemy import Float
+from sqlalchemy import Float, Boolean
 from sqlalchemy import ForeignKey
 from sqlalchemy import DateTime
 from sqlalchemy.sql import func
