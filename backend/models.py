@@ -6,6 +6,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import DateTime
 from sqlalchemy.sql import func
 from sqlalchemy import JSON
+from datetime import datetime
 
 
 from database import Base
