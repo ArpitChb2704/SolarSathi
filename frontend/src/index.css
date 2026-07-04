@@ -198,6 +198,61 @@ body::before {
   justify-content: space-between;
 }
 
+
+
+/* Intro.js custom theme */
+.introjs-tooltip {
+  background: rgba(15, 22, 35, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(245,200,66,0.3) !important;
+  border-radius: 16px !important;
+  color: #fff !important;
+  font-family: var(--font-body) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+}
+
+.introjs-title {
+  color: #f5c842 !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+}
+
+.introjs-button {
+  background: linear-gradient(135deg, #f5c842, #ff9f1c) !important;
+  color: #0a0e17 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-family: var(--font-body) !important;
+}
+
+.introjs-prevbutton {
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+}
+
+.introjs-skipbutton {
+  color: rgba(255,255,255,0.4) !important;
+}
+
+.introjs-progressbar {
+  background: #f5c842 !important;
+}
+
+.introjs-progress {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+.introjs-helperLayer {
+  border: 2px solid rgba(245,200,66,0.5) !important;
+  border-radius: 12px !important;
+}
+
+
+
+
+
+
 .page-title {
   font-family: var(--font-display);
   font-size: 18px;
