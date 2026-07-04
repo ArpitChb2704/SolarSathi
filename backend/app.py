@@ -322,6 +322,24 @@ def predict(
 
     db.commit()
 
+    # After saving prediction in /predict/{plant_id}
+    try:
+        if predicted_energy > 0:
+            diff_pct = ((actual_energy - predicted_energy) / predicted_energy) * 100
+            if diff_pct < -15:
+                severity = "critical" if diff_pct < -30 else "warning"
+                alert = Alert(
+                    user_id=plant.user_id,
+                    plant_id=plant.id,
+                    plant_name=plant.plant_name,
+                    message=f"{plant.plant_name} is underperforming by {abs(diff_pct):.1f}% — actual {actual_energy} kWh vs predicted {predicted_energy} kWh",
+                    severity=severity,
+                )
+                db.add(alert)
+                db.commit()
+    except Exception as e:
+        print(f"Alert generation error: {e}")
+
     return result
 
 # =====================================================
