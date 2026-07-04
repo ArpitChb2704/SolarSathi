@@ -6,6 +6,7 @@ import {
 } from 'recharts'
 
 import API from '../config'
+import { WeatherCard, CarbonCard, SavingsCard } from '../components/PlantInsights'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
@@ -200,6 +201,9 @@ function PlantCard({ plant }) {
 
           {tab === 2 && (
             <div>
+              <WeatherCard plantId={plant.id} />
+              <CarbonCard annualKwh={data.annual_energy_kwh} />
+              <SavingsCard annualKwh={data.annual_energy_kwh} />
               <div className="metrics-grid">
                 <div className="metric-card" style={{ gridColumn: '1 / -1' }}>
                   <div className="metric-label">Annual Energy Forecast</div>
