@@ -483,6 +483,22 @@ async def clear_chat(user_id: int):
     session_memory[user_id] = []
     return {"message": "Chat history cleared"}
 
+@app.get("/alerts/{user_id}")
+def get_alerts(user_id: int, db: Session = Depends(get_db)):
+    alerts = db.query(Alert).filter(
+        Alert.user_id == user_id,
+        Alert.is_read == False
+    ).order_by(Alert.created_at.desc()).limit(10).all()
+    return alerts
+
+@app.patch("/alerts/{alert_id}/read")
+def mark_read(alert_id: int, db: Session = Depends(get_db)):
+    alert = db.query(Alert).filter(Alert.id == alert_id).first()
+    if alert:
+        alert.is_read = True
+        db.commit()
+    return {"message": "marked read"}
+
 
 
 # =====================================================
