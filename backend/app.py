@@ -500,6 +500,38 @@ def mark_read(alert_id: int, db: Session = Depends(get_db)):
     return {"message": "marked read"}
 
 
+import httpx
+
+@app.get("/weather/{plant_id}")
+async def get_weather(plant_id: int, db: Session = Depends(get_db)):
+    plant = db.query(Plant).filter(Plant.id == plant_id).first()
+    if not plant:
+        raise HTTPException(status_code=404, detail="Plant not found")
+    
+    weather_key = os.environ.get("WEATHER_API_KEY")
+    if not weather_key:
+        raise HTTPException(status_code=500, detail="Weather API key not set")
+    
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={plant.lat}&lon={plant.lon}&appid={weather_key}&units=metric"
+    
+    async with httpx.AsyncClient() as client:
+        res = await client.get(url)
+        data = res.json()
+    
+    return {
+        "temp": round(data["main"]["temp"]),
+        "feels_like": round(data["main"]["feels_like"]),
+        "humidity": data["main"]["humidity"],
+        "description": data["weather"][0]["description"].title(),
+        "icon": data["weather"][0]["icon"],
+        "cloud_cover": data["clouds"]["all"],
+        "wind_speed": round(data["wind"]["speed"] * 3.6, 1),
+        "sunrise": data["sys"]["sunrise"],
+        "sunset": data["sys"]["sunset"],
+        "city": data.get("name", "Your Location"),
+    }
+
+
 
 # =====================================================
 # SEND DAILY REPORT
