@@ -6,6 +6,8 @@ import {
 } from 'recharts'
 
 import API from '../config'
+import { WeatherCard, CarbonCard, SavingsCard } from '../components/PlantInsights'
+import OnboardingTour from '../components/OnboardingTour'
 
 
 
@@ -202,6 +204,9 @@ function PlantCard({ plant }) {
 
           {tab === 2 && (
             <div>
+              <WeatherCard plantId={plant.id} />
+              <CarbonCard annualKwh={data.annual_energy_kwh} />
+              <SavingsCard annualKwh={data.annual_energy_kwh} />
               <div className="metrics-grid">
                 <div className="metric-card" style={{ gridColumn: '1 / -1' }}>
                   <div className="metric-label">Annual Energy Forecast</div>
@@ -277,6 +282,7 @@ export default function Dashboard({ onNavigate }) {
 
   return (
     <div>
+      <OnboardingTour />
       <div className="section-header">
         <div className="section-title">Your Solar Plants</div>
         <div style={{ display: 'flex', gap: 10 }}>
