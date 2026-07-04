@@ -53,3 +53,14 @@ class Prediction(Base):
     annual_energy = Column(Float)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+class Alert(Base):
+    __tablename__ = "alerts"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    plant_id = Column(Integer, ForeignKey("plants.id"))
+    plant_name = Column(String)
+    message = Column(String)
+    severity = Column(String)  # "warning" | "critical"
+    is_read = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
