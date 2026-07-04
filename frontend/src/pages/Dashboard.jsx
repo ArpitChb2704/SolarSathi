@@ -6,8 +6,7 @@ import {
 } from 'recharts'
 
 import API from '../config'
-import { WeatherCard, CarbonCard, SavingsCard } from '../components/PlantInsights'
-import OnboardingTour from '../components/OnboardingTour'
+
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
