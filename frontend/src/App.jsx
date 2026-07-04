@@ -20,6 +20,16 @@ function AppShell() {
   const [authPage, setAuthPage] = useState('login') // 'login' | 'signup'
   const [page, setPage] = useState('dashboard')
   const [userName, setUserName] = useState('')
+  const [alerts, setAlerts] = useState([])
+  const [showAlerts, setShowAlerts] = useState(false)
+
+useEffect(() => {
+  if (!userId) return
+  fetch(`${API}/alerts/${userId}`)
+    .then(r => r.json())
+    .then(setAlerts)
+    .catch(() => {})
+}, [userId, page])
 
   useEffect(() => {
     if (!userId) return
@@ -91,7 +101,82 @@ function AppShell() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div className="status-dot" />
             <span style={{ fontSize: 12, color: 'var(--text3)' }}>Backend Connected</span>
+        
+            {/* Bell icon */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={() => setShowAlerts(s => !s)}
+                style={{
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: 8, padding: '8px 12px',
+                  cursor: 'pointer', fontSize: 16,
+                  position: 'relative',
+                }}
+              >
+                🔔
+                {alerts.length > 0 && (
+                  <span style={{
+                    position: 'absolute', top: -4, right: -4,
+                    background: '#ff5757', color: '#fff',
+                    borderRadius: '50%', width: 18, height: 18,
+                    fontSize: 11, fontWeight: 700,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {alerts.length}
+                  </span>
+                )}
+              </button>
+        
+              {showAlerts && (
+                <div style={{
+                  position: 'absolute', right: 0, top: 44,
+                  width: 320, background: 'rgba(15,22,35,0.98)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: 12, overflow: 'hidden',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                  zIndex: 1000,
+                }}>
+                  <div style={{ padding: '14px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)', fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: '#fff' }}>
+                    🔔 Alerts {alerts.length > 0 && <span style={{ color: '#ff5757' }}>({alerts.length})</span>}
+                  </div>
+                  {alerts.length === 0 ? (
+                    <div style={{ padding: 24, textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: 13 }}>
+                      No alerts — all plants performing well ✅
+                    </div>
+                  ) : (
+                    alerts.map(a => (
+                      <div key={a.id} style={{
+                        padding: '12px 16px',
+                        borderBottom: '1px solid rgba(255,255,255,0.06)',
+                        display: 'flex', gap: 12, alignItems: 'flex-start',
+                      }}>
+                        <span style={{ fontSize: 18 }}>{a.severity === 'critical' ? '🔴' : '🟡'}</span>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: 13, color: '#fff', lineHeight: 1.4 }}>{a.message}</div>
+                          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 4 }}>
+                            {new Date(a.created_at).toLocaleDateString()}
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            fetch(`${API}/alerts/${a.id}/read`, { method: 'PATCH' })
+                            setAlerts(prev => prev.filter(x => x.id !== a.id))
+                          }}
+                          style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: 16 }}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+        
           </div>
+        </div>
         </div>
 
         <div className="page-content">
