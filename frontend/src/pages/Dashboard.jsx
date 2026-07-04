@@ -7,6 +7,7 @@ import {
 
 import API from '../config'
 import { WeatherCard, CarbonCard, SavingsCard } from '../components/PlantInsights'
+import OnboardingTour from '../components/OnboardingTour'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload?.length) {
@@ -279,6 +280,7 @@ export default function Dashboard({ onNavigate }) {
 
   return (
     <div>
+      <OnboardingTour />
       <div className="section-header">
         <div className="section-title">Your Solar Plants</div>
         <div style={{ display: 'flex', gap: 10 }}>
