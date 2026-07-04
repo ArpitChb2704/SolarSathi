@@ -1,4 +1,4 @@
-import { useState ,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -17,19 +17,19 @@ const pageTitles = {
 
 function AppShell() {
   const { userId, logout } = useAuth()
-  const [authPage, setAuthPage] = useState('login') // 'login' | 'signup'
+  const [authPage, setAuthPage] = useState('login')
   const [page, setPage] = useState('dashboard')
   const [userName, setUserName] = useState('')
   const [alerts, setAlerts] = useState([])
   const [showAlerts, setShowAlerts] = useState(false)
 
-useEffect(() => {
-  if (!userId) return
-  fetch(`${API}/alerts/${userId}`)
-    .then(r => r.json())
-    .then(setAlerts)
-    .catch(() => {})
-}, [userId, page])
+  useEffect(() => {
+    if (!userId) return
+    fetch(`${API}/alerts/${userId}`)
+      .then(r => r.json())
+      .then(setAlerts)
+      .catch(() => {})
+  }, [userId, page])
 
   useEffect(() => {
     if (!userId) return
@@ -39,7 +39,6 @@ useEffect(() => {
       .catch(() => {})
   }, [userId])
 
-  // Not logged in → show auth
   if (!userId) {
     return authPage === 'login'
       ? <Login onSwitch={() => setAuthPage('signup')} />
@@ -58,7 +57,7 @@ useEffect(() => {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <div className="brand-icon"><img src="/logo.png" alt="Logo" height={120} width={120}/></div>
+          <div className="brand-icon"><img src="/logo.png" alt="Logo" height={120} width={120} /></div>
           <div className="brand-name">SolarSathi</div>
           <div className="brand-sub">Monitoring Platform</div>
         </div>
@@ -85,9 +84,7 @@ useEffect(() => {
             </div>
             <div className="user-info">
               <div className="user-label">Logged in as</div>
-              <div className="user-id">
-                {userName || `User #${userId}`}
-              </div>
+              <div className="user-id">{userName || `User #${userId}`}</div>
             </div>
             <button className="logout-btn" onClick={logout} title="Logout">⏻</button>
           </div>
@@ -101,7 +98,7 @@ useEffect(() => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div className="status-dot" />
             <span style={{ fontSize: 12, color: 'var(--text3)' }}>Backend Connected</span>
-        
+
             {/* Bell icon */}
             <div style={{ position: 'relative' }}>
               <button
@@ -127,7 +124,7 @@ useEffect(() => {
                   </span>
                 )}
               </button>
-        
+
               {showAlerts && (
                 <div style={{
                   position: 'absolute', right: 0, top: 44,
@@ -174,9 +171,8 @@ useEffect(() => {
                 </div>
               )}
             </div>
-        
+
           </div>
-        </div>
         </div>
 
         <div className="page-content">
@@ -185,7 +181,7 @@ useEffect(() => {
           {page === 'profile' && <Profile />}
           {page === 'chat' && <Chatbot userName={userName} />}
         </div>
-     </div>
+      </div>
 
       {/* Mobile bottom nav */}
       <div style={{
@@ -224,6 +220,7 @@ useEffect(() => {
           </button>
         ))}
       </div>
+
     </div>
   )
 }
